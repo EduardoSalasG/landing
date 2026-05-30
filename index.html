@@ -10,6 +10,18 @@
   <meta property="og:description" content="Apps, CV, tech services and curated playlists.">
   <meta property="og:type" content="website">
   <title>Eduardo Salas</title>
+  <script>
+    (function (w, d, s, l, i) {
+      w[l] = w[l] || [];
+      w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+      var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s),
+        dl = l !== "dataLayer" ? "&l=" + l : "";
+      j.async = true;
+      j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+      f.parentNode.insertBefore(j, f);
+    })(window, document, "script", "dataLayer", "GTM-MR4J668V");
+  </script>
   <link rel="icon"
     href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect x='4' y='4' width='56' height='56' rx='14' fill='white' stroke='%23001f3f' stroke-width='4'/%3E%3Ctext x='32' y='39' text-anchor='middle' font-family='Arial,sans-serif' font-size='22' font-weight='700' fill='%23001f3f'%3EES%3C/text%3E%3C/svg%3E">
   <style>
@@ -259,6 +271,8 @@
 </head>
 
 <body>
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MR4J668V" height="0" width="0"
+      style="display:none;visibility:hidden"></iframe></noscript>
   <div class="page">
     <div class="hub">
       <header class="profile">
@@ -392,6 +406,19 @@
   </div>
 
   <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function trackEvent(payload) {
+      window.dataLayer.push(payload);
+    }
+
+    trackEvent({
+      event: "page_metadata",
+      page_type: "landing",
+      page_title: document.title,
+      page_path: location.pathname
+    });
+
     document.querySelectorAll(".section").forEach((section) => {
       const button = section.querySelector(".toggle");
       const indicator = section.querySelector(".indicator");
@@ -403,6 +430,27 @@
         button.setAttribute("aria-expanded", nextState);
         section.dataset.open = nextState;
         indicator.textContent = isOpen ? "+" : "-";
+        trackEvent({
+          event: "accordion_toggle",
+          accordion_name: button.querySelector("span")?.textContent?.trim() || "unknown",
+          accordion_state: nextState === "true" ? "open" : "closed"
+        });
+      });
+    });
+
+    document.addEventListener("click", (e) => {
+      const link = e.target.closest("a[href]");
+      if (!link) return;
+      const label = (link.textContent || "").trim().replace(/\s+/g, " ").slice(0, 120);
+      const href = link.getAttribute("href") || "";
+      const section = link.closest(".section");
+      const sectionName = section?.querySelector(".toggle span")?.textContent?.trim() || "none";
+
+      trackEvent({
+        event: "outbound_link_click",
+        link_text: label || "no_text",
+        link_url: href || "no_href",
+        link_group: sectionName
       });
     });
   </script>
