@@ -192,6 +192,23 @@
       transition: border-color 160ms ease, color 160ms ease, transform 160ms ease;
     }
 
+    .link-label {
+      display: inline-flex;
+      min-width: 0;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .playlist-cover {
+      width: 42px;
+      height: 42px;
+      flex: 0 0 auto;
+      border: 1px solid var(--color-border);
+      border-radius: 8px;
+      background: var(--color-bg);
+      object-fit: cover;
+    }
+
     .link:hover {
       border-color: rgba(0, 31, 63, 0.34);
       color: var(--color-navy-hover);
@@ -286,52 +303,82 @@
               <div class="links">
                 <a class="link" href="https://open.spotify.com/playlist/6slmnlXOAcQUWMXysfFPAD" target="_blank"
                   rel="noopener noreferrer">
+                  <span class="link-label">
+                    <img class="playlist-cover" src="https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da849e1fd59a8f09bef9d77bbca7" alt="Salsa playlist cover" loading="lazy">
                     <span>Salsa</span>
+                  </span>
                   <span aria-hidden="true">↗</span>
                 </a>
                 <a class="link" href="https://open.spotify.com/playlist/23SUET2b5q6KKkBn03a7p7" target="_blank"
                   rel="noopener noreferrer">
+                  <span class="link-label">
+                    <img class="playlist-cover" src="https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da8461a5bc7dbbbef0e580cb454a" alt="Cuba playlist cover" loading="lazy">
                     <span>Cuba</span>
+                  </span>
                   <span aria-hidden="true">↗</span>
                 </a>
                 <a class="link" href="https://open.spotify.com/playlist/7hr0RlFZK7MFBsuK0Uxi30" target="_blank"
                   rel="noopener noreferrer">
+                  <span class="link-label">
+                    <img class="playlist-cover" src="https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da8469ce27c0b3ec769025e2b7a6" alt="Bachata playlist cover" loading="lazy">
                     <span>Bachata</span>
+                  </span>
                   <span aria-hidden="true">↗</span>
                 </a>
                 <a class="link" href="https://open.spotify.com/playlist/2qDjVjhfm31NQG0XT0KIEl" target="_blank"
                   rel="noopener noreferrer">
+                  <span class="link-label">
+                    <img class="playlist-cover" src="https://mosaic.scdn.co/300/ab67616d00001e020b424e0cc8e0dc79b95f8a7dab67616d00001e0215945265f8acdaa88076cb07ab67616d00001e025578f26caecc0262079cf5c8ab67616d00001e0280629f7322519e9a52100c33" alt="Boogaloo playlist cover" loading="lazy">
                     <span>Boogaloo</span>
+                  </span>
                   <span aria-hidden="true">↗</span>
                 </a>
                 <a class="link" href="https://open.spotify.com/playlist/64gDHFl5u12z1s5t5ox5YR" target="_blank"
                   rel="noopener noreferrer">
+                  <span class="link-label">
+                    <img class="playlist-cover" src="https://mosaic.scdn.co/300/ab67616d00001e024e51509d6c64cd6f4c4b6c5cab67616d00001e0258a0f485c7340bdeb1bf7b2eab67616d00001e025adb69a19a81bd4e5c3dca0aab67616d00001e029c6e8a6d3fbc184c7d604c4f" alt="Chachachá playlist cover" loading="lazy">
                     <span>Chachachá</span>
+                  </span>
                   <span aria-hidden="true">↗</span>
                 </a>
                 <a class="link" href="https://open.spotify.com/playlist/01c4qkeHfkYjqkSwic2sMd" target="_blank"
                   rel="noopener noreferrer">
+                  <span class="link-label">
+                    <img class="playlist-cover" src="https://mosaic.scdn.co/300/ab67616d00001e0216f419ced7cfd2e7e7432208ab67616d00001e024a3a020928346af3c7b8c73fab67616d00001e02a976272640c9060b6f728f2fab67616d00001e02f69484d31e19e419abfa98bb" alt="Changüí playlist cover" loading="lazy">
                     <span>Changüí</span>
+                  </span>
                   <span aria-hidden="true">↗</span>
                 </a>
                 <a class="link" href="https://open.spotify.com/playlist/4YULrz2htyJe1CtTfsQxxp" target="_blank"
                   rel="noopener noreferrer">
+                  <span class="link-label">
+                    <img class="playlist-cover" src="https://mosaic.scdn.co/300/ab67616d00001e0215ce6d28d437512c7483de6eab67616d00001e02552ae7f465c58a22f295fe5bab67616d00001e0281fd010b98a543921798348bab67616d00001e02f764a22df5785965408c08b7" alt="Merengue playlist cover" loading="lazy">
                     <span>Merengue</span>
+                  </span>
                   <span aria-hidden="true">↗</span>
                 </a>
                 <a class="link" href="https://open.spotify.com/playlist/6a8bEW5WNT3s20Rw73KjJz" target="_blank"
                   rel="noopener noreferrer">
+                  <span class="link-label">
+                    <img class="playlist-cover" src="https://mosaic.scdn.co/300/ab67616d00001e0273c6881f2abaaacca7d7176cab67616d00001e028637ed291f2914b9165d49c4ab67616d00001e02afd23c346a4ff295fc67efd4ab67616d00001e02dfe63198b8b62418bcdbc26b" alt="Pachanga playlist cover" loading="lazy">
                     <span>Pachanga</span>
+                  </span>
                   <span aria-hidden="true">↗</span>
                 </a>
                 <a class="link" href="https://open.spotify.com/playlist/1sBITKsnz3YhbkKeXSCOlw" target="_blank"
                   rel="noopener noreferrer">
+                  <span class="link-label">
+                    <img class="playlist-cover" src="https://mosaic.scdn.co/300/ab67616d00001e020ef5ff60b982151cf1978f1dab67616d00001e0254a75ca7b59bc26ef0811710ab67616d00001e02902abbbe80457ac4f08f7b97ab67616d00001e02b78d94c4856e84d9fbacecf9" alt="Rumba Cubana playlist cover" loading="lazy">
                     <span>Rumba Cubana</span>
+                  </span>
                   <span aria-hidden="true">↗</span>
                 </a>
                 <a class="link" href="https://open.spotify.com/playlist/6gCgB2DrSIawzpqPP1VrfX" target="_blank"
                   rel="noopener noreferrer">
+                  <span class="link-label">
+                    <img class="playlist-cover" src="https://mosaic.scdn.co/300/ab67616d00001e02340087c917904bc510c4fb6bab67616d00001e028296848031aab0571d7f4e27ab67616d00001e028e14a19b0dd8f2815255af86ab67616d00001e02c55f1130793ab6845b219d62" alt="Son playlist cover" loading="lazy">
                     <span>Son</span>
+                  </span>
                   <span aria-hidden="true">↗</span>
                 </a>
               </div>
