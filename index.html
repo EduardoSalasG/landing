@@ -1,0 +1,364 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Personal hub for Eduardo Salas: apps, CV, tech services and curated playlists.">
+  <meta name="theme-color" content="#001f3f">
+  <meta property="og:title" content="Eduardo Salas">
+  <meta property="og:description" content="Apps, CV, tech services and curated playlists.">
+  <meta property="og:type" content="website">
+  <title>Eduardo Salas</title>
+  <link rel="icon"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect x='4' y='4' width='56' height='56' rx='14' fill='white' stroke='%23001f3f' stroke-width='4'/%3E%3Ctext x='32' y='39' text-anchor='middle' font-family='Arial,sans-serif' font-size='22' font-weight='700' fill='%23001f3f'%3EES%3C/text%3E%3C/svg%3E">
+  <style>
+    :root {
+      color-scheme: light;
+      --color-bg: #f8fafc;
+      --color-surface: #ffffff;
+      --color-text: #0f172a;
+      --color-muted: #64748b;
+      --color-border: #e2e8f0;
+      --color-navy: #001f3f;
+      --color-navy-hover: #003366;
+      --color-focus: #1d4ed8;
+      --shadow: 0 20px 45px rgba(15, 23, 42, 0.08);
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      min-width: 320px;
+      background: var(--color-bg);
+    }
+
+    body {
+      min-height: 100vh;
+      margin: 0;
+      background:
+        radial-gradient(circle at top, rgba(0, 31, 63, 0.06), transparent 34rem),
+        var(--color-bg);
+      color: var(--color-text);
+      line-height: 1.5;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .page {
+      display: flex;
+      min-height: 100vh;
+      align-items: center;
+      justify-content: center;
+      padding: 32px 16px;
+    }
+
+    .hub {
+      width: min(100%, 520px);
+    }
+
+    .profile {
+      margin-bottom: 28px;
+      text-align: center;
+    }
+
+    .avatar {
+      display: inline-grid;
+      width: 82px;
+      height: 82px;
+      place-items: center;
+      border: 1px solid var(--color-border);
+      border-radius: 50%;
+      background: var(--color-surface);
+      color: var(--color-navy);
+      font-size: 1.35rem;
+      font-weight: 800;
+      letter-spacing: 0;
+      box-shadow: var(--shadow);
+    }
+
+    h1 {
+      margin: 18px 0 6px;
+      color: var(--color-text);
+      font-size: clamp(2rem, 9vw, 3rem);
+      line-height: 1;
+      letter-spacing: 0;
+    }
+
+    .subtitle {
+      margin: 0;
+      color: var(--color-muted);
+      font-size: 1rem;
+    }
+
+    main {
+      display: grid;
+      gap: 14px;
+    }
+
+    .section {
+      overflow: hidden;
+      border: 1px solid var(--color-border);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.92);
+      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.05);
+    }
+
+    .toggle {
+      display: flex;
+      width: 100%;
+      min-height: 60px;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      border: 0;
+      background: transparent;
+      color: var(--color-text);
+      cursor: pointer;
+      font: inherit;
+      font-weight: 750;
+      padding: 0 18px;
+      text-align: left;
+    }
+
+    .toggle:hover {
+      color: var(--color-navy-hover);
+    }
+
+    .toggle:focus-visible,
+    .link:focus-visible {
+      outline: 3px solid var(--color-focus);
+      outline-offset: 3px;
+    }
+
+    .indicator {
+      display: grid;
+      width: 30px;
+      height: 30px;
+      flex: 0 0 auto;
+      place-items: center;
+      border: 1px solid var(--color-border);
+      border-radius: 8px;
+      color: var(--color-navy);
+      font-size: 1.1rem;
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    .panel {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows 180ms ease;
+    }
+
+    .section[data-open="true"] .panel {
+      grid-template-rows: 1fr;
+    }
+
+    .panel-inner {
+      min-height: 0;
+      overflow: hidden;
+    }
+
+    .links {
+      display: grid;
+      gap: 10px;
+      padding: 0 14px 14px;
+    }
+
+    .link {
+      display: flex;
+      min-height: 52px;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      border: 1px solid var(--color-border);
+      border-radius: 8px;
+      background: var(--color-surface);
+      color: var(--color-text);
+      font-weight: 650;
+      padding: 0 16px;
+      transition: border-color 160ms ease, color 160ms ease, transform 160ms ease;
+    }
+
+    .link:hover {
+      border-color: rgba(0, 31, 63, 0.34);
+      color: var(--color-navy-hover);
+      transform: translateY(-1px);
+    }
+
+    .link span:last-child {
+      color: var(--color-muted);
+      font-size: 1rem;
+    }
+
+    footer {
+      margin-top: 28px;
+      color: var(--color-muted);
+      font-size: 0.92rem;
+      text-align: center;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .page {
+        align-items: flex-start;
+        padding-top: 28px;
+      }
+
+      .avatar {
+        width: 74px;
+        height: 74px;
+      }
+
+      .toggle,
+      .link {
+        min-height: 56px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+    <div class="hub">
+      <header class="profile">
+        <div class="avatar" aria-hidden="true">ES</div>
+        <h1>Eduardo Salas</h1>
+        <p class="subtitle">Software, products and curated music.</p>
+      </header>
+
+      <main>
+        <section class="section" data-open="false">
+          <button class="toggle" type="button" aria-expanded="false" aria-controls="tech-panel">
+            <span>Tech</span>
+            <span class="indicator" aria-hidden="true">+</span>
+          </button>
+          <div class="panel" id="tech-panel">
+            <div class="panel-inner">
+              <div class="links">
+                <a class="link" href="https://apps.eduardosalasg.dev" target="_blank" rel="noopener noreferrer">
+                  <span>Apps</span>
+                  <span aria-hidden="true">↗</span>
+                </a>
+                <a class="link" href="https://cv.eduardosalasg.dev" target="_blank" rel="noopener noreferrer">
+                  <span>CV</span>
+                  <span aria-hidden="true">↗</span>
+                </a>
+                <a class="link" href="https://consultora.eduardosalasg.dev" target="_blank" rel="noopener noreferrer">
+                  <span>Tech Services</span>
+                  <span aria-hidden="true">↗</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section" data-open="false">
+          <button class="toggle" type="button" aria-expanded="false" aria-controls="playlists-panel">
+            <span>Playlists</span>
+            <span class="indicator" aria-hidden="true">+</span>
+          </button>
+          <div class="panel" id="playlists-panel">
+            <div class="panel-inner">
+              <div class="links">
+                <a class="link" href="https://open.spotify.com/playlist/6slmnlXOAcQUWMXysfFPAD" target="_blank"
+                  rel="noopener noreferrer">
+                  <span>Playlist 01</span>
+                  <span aria-hidden="true">↗</span>
+                </a>
+                <a class="link" href="https://open.spotify.com/playlist/23SUET2b5q6KKkBn03a7p7" target="_blank"
+                  rel="noopener noreferrer">
+                  <span>Playlist 02</span>
+                  <span aria-hidden="true">↗</span>
+                </a>
+                <a class="link" href="https://open.spotify.com/playlist/7hr0RlFZK7MFBsuK0Uxi30" target="_blank"
+                  rel="noopener noreferrer">
+                  <span>Playlist 03</span>
+                  <span aria-hidden="true">↗</span>
+                </a>
+                <a class="link" href="https://open.spotify.com/playlist/2qDjVjhfm31NQG0XT0KIEl" target="_blank"
+                  rel="noopener noreferrer">
+                  <span>Playlist 04</span>
+                  <span aria-hidden="true">↗</span>
+                </a>
+                <a class="link" href="https://open.spotify.com/playlist/64gDHFl5u12z1s5t5ox5YR" target="_blank"
+                  rel="noopener noreferrer">
+                  <span>Playlist 05</span>
+                  <span aria-hidden="true">↗</span>
+                </a>
+                <a class="link" href="https://open.spotify.com/playlist/01c4qkeHfkYjqkSwic2sMd" target="_blank"
+                  rel="noopener noreferrer">
+                  <span>Playlist 06</span>
+                  <span aria-hidden="true">↗</span>
+                </a>
+                <a class="link" href="https://open.spotify.com/playlist/4YULrz2htyJe1CtTfsQxxp" target="_blank"
+                  rel="noopener noreferrer">
+                  <span>Playlist 07</span>
+                  <span aria-hidden="true">↗</span>
+                </a>
+                <a class="link" href="https://open.spotify.com/playlist/6a8bEW5WNT3s20Rw73KjJz" target="_blank"
+                  rel="noopener noreferrer">
+                  <span>Playlist 08</span>
+                  <span aria-hidden="true">↗</span>
+                </a>
+                <a class="link" href="https://open.spotify.com/playlist/1sBITKsnz3YhbkKeXSCOlw" target="_blank"
+                  rel="noopener noreferrer">
+                  <span>Playlist 09</span>
+                  <span aria-hidden="true">↗</span>
+                </a>
+                <a class="link" href="https://open.spotify.com/playlist/6gCgB2DrSIawzpqPP1VrfX" target="_blank"
+                  rel="noopener noreferrer">
+                  <span>Playlist 10</span>
+                  <span aria-hidden="true">↗</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer>&copy; 2026 Eduardo Salas</footer>
+    </div>
+  </div>
+
+  <script>
+    document.querySelectorAll(".section").forEach((section) => {
+      const button = section.querySelector(".toggle");
+      const indicator = section.querySelector(".indicator");
+
+      button.addEventListener("click", () => {
+        const isOpen = button.getAttribute("aria-expanded") === "true";
+        const nextState = String(!isOpen);
+
+        button.setAttribute("aria-expanded", nextState);
+        section.dataset.open = nextState;
+        indicator.textContent = isOpen ? "+" : "-";
+      });
+    });
+  </script>
+</body>
+
+</html>
