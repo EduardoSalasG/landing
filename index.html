@@ -174,7 +174,7 @@
       transition: grid-template-rows 180ms ease;
     }
 
-    .section[data-open="true"] .panel {
+    .section[data-open="true"] > .panel {
       grid-template-rows: 1fr;
     }
 
@@ -441,8 +441,10 @@
     });
 
     document.querySelectorAll(".section").forEach((section) => {
-      const button = section.querySelector(".toggle");
-      const indicator = section.querySelector(".indicator");
+      const button = section.querySelector(":scope > .toggle");
+      const indicator = section.querySelector(":scope > .toggle .indicator");
+
+      if (!button || !indicator) return;
 
       button.addEventListener("click", () => {
         const isOpen = button.getAttribute("aria-expanded") === "true";
