@@ -189,6 +189,15 @@
       padding: 0 14px 14px;
     }
 
+    .nested-section {
+      border-radius: 8px;
+      box-shadow: none;
+    }
+
+    .nested-section .links {
+      padding-top: 0;
+    }
+
     .link {
       display: flex;
       min-height: 52px;
@@ -290,29 +299,28 @@
           <div class="panel" id="tech-panel">
             <div class="panel-inner">
               <div class="links">
+                <section class="section nested-section" data-open="false">
+                  <button class="toggle" type="button" aria-expanded="false" aria-controls="apps-panel">
+                    <span>Apps</span>
+                    <span class="indicator" aria-hidden="true">+</span>
+                  </button>
+                  <div class="panel" id="apps-panel">
+                    <div class="panel-inner">
+                      <div class="links">
+                        <a class="link" href="https://expenses-tracker-easg.netlify.app/" target="_blank" rel="noopener noreferrer">
+                          <span>Expenses Tracker</span>
+                          <span aria-hidden="true">↗</span>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </section>
                 <a class="link" href="https://cv.eduardosalasg.dev" target="_blank" rel="noopener noreferrer">
                   <span>CV</span>
                   <span aria-hidden="true">↗</span>
                 </a>
                 <a class="link" href="https://consultora.eduardosalasg.dev" target="_blank" rel="noopener noreferrer">
                   <span>Tech Services</span>
-                  <span aria-hidden="true">↗</span>
-                </a>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section class="section" data-open="false">
-          <button class="toggle" type="button" aria-expanded="false" aria-controls="apps-panel">
-            <span>Apps</span>
-            <span class="indicator" aria-hidden="true">+</span>
-          </button>
-          <div class="panel" id="apps-panel">
-            <div class="panel-inner">
-              <div class="links">
-                <a class="link" href="https://expenses-tracker-easg.netlify.app/" target="_blank" rel="noopener noreferrer">
-                  <span>Expenses Tracker</span>
                   <span aria-hidden="true">↗</span>
                 </a>
               </div>
